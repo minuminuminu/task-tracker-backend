@@ -19,6 +19,21 @@ app.get('/tasks', async (req, res) => {
   res.json(tasks);
 });
 
+app.get('/tasks/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const task = await prisma.task.findUnique({
+      where: {
+        id: Number(id)
+      }
+    });
+
+    res.json(task);
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
 app.post('/tasks', async (req, res) => {
   const { title, description, due, profile } = req.body;
   try {
