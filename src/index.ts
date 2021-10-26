@@ -14,7 +14,11 @@ app.use(
 );
 
 app.get('/tasks', async (req, res) => {
-  const tasks = await prisma.task.findMany({});
+  const tasks = await prisma.task.findMany({
+    include: {
+      profile: true
+    }
+  });
 
   res.json(tasks);
 });
@@ -25,6 +29,9 @@ app.get('/tasks/:id', async (req, res) => {
     const task = await prisma.task.findUnique({
       where: {
         id: Number(id)
+      },
+      include: {
+        profile: true
       }
     });
 
