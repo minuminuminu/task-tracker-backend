@@ -26,4 +26,4 @@ Content-Type: application/json
 
 
 ### Delete Profile
-DELETE https://task-tracker-minu.herokuapp.com/profiles/2
+DELETE https://task-tracker-minu.herokuapp.com/profiles/3
